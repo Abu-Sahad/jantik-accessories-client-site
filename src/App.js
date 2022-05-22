@@ -10,7 +10,6 @@ function App() {
   return (
     <div>
       <Navbar></Navbar>
-      {/* <h1>nav bar arae</h1> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
