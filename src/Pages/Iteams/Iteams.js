@@ -12,7 +12,7 @@ const Iteams = () => {
     return (
         <div className='my-28 mx-12'>
             <div className='text-center mb-10'>
-                <h3 className='text-primary text-xl font-bold uppercase'>Tools area</h3>
+                <h3 className='text-primary text-4xl font-bold uppercase'>Tools area</h3>
             </div>
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
