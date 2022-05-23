@@ -5,7 +5,7 @@ const Iteams = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('items.json')
+        fetch('http://localhost:5000/item')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [])
@@ -17,7 +17,7 @@ const Iteams = () => {
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {
                     items.slice(0, 6).map(item => <Iteam
-                        key={item.id}
+                        key={item._id}
                         item={item}
                     ></Iteam>)
                 }

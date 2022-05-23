@@ -1,19 +1,23 @@
 import React from 'react';
 import auth from '../../firebase.init';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import Loading from '../Loading/Loading';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+
+const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate();
+
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     let errorMessage;
 
@@ -22,14 +26,16 @@ const Login = () => {
     }
 
     if (gUser || user) {
-        console.log(gUser);
+        navigate('/');
     }
-    if (gError || error) {
-        errorMessage = <p className='text-red-400'><small>{error?.message || gError?.message}</small></p>
+    if (gError || error || updateError) {
+        errorMessage = <p className='text-red-400'><small>{error?.message || gError?.message || updateError?.message}</small></p>
     }
-    const onSubmit = data => {
-        console.log(data)
-        signInWithEmailAndPassword(data.email, data.password)
+    const onSubmit = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+
+        Navigate('/home');
     }
     return (
         <div className='flex justify-center items-center h-screen'>
@@ -38,6 +44,26 @@ const Login = () => {
                     <h2 class="text-center text-2xl font-bold">Log In</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
+                        <div class="form-control w-full max-w-xs">
+                            <label class="label">
+                                <span class="label-text">Name</span>
+                            </label>
+                            <input
+                                type="name"
+                                placeholder="Your Name here"
+                                class="input input-bordered w-full max-w-xs"
+                                {...register("name", {
+                                    required: {
+                                        value: true,
+                                        message: 'Name is required'
+                                    }
+                                })}
+                            />
+                            <label class="label">
+                                {errors.name?.type === 'required' && <span class="label-text-alt">{errors.name.message}</span>}
+
+                            </label>
+                        </div>
                         <div class="form-control w-full max-w-xs">
                             <label class="label">
                                 <span class="label-text">Email</span>
@@ -96,7 +122,7 @@ const Login = () => {
                         <input className='btn w-full max-w-xs' type="submit" value="Log In" />
                     </form>
                     {/* <p>New to Jantik Accessories?</p><Link></Link> */}
-                    <p>New to Jantik Accessories?<Link to='/signup' className='text-primary'>Create a Account</Link></p>
+                    <p>New to Jantik Accessories?<Link to='/signup' className='text-primary'>Please Log In</Link></p>
                     <div class="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} class="btn btn-accent">continue with google</button>
 
@@ -106,4 +132,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;
