@@ -1,18 +1,14 @@
 import React from 'react';
+import Footer from '../Footer/Footer';
+import Iteams from '../Iteams/Iteams';
 import Banner from './Banner';
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <h1>this is banner</h1>
-            <h1>this is banner</h1><br />
-            <h1>this is banner</h1><br />
-            <h1>this is banner</h1><b />
-            <h1>this is banner</h1><b />
-            <h1>this is banner</h1><b />
-            <h1>this is banner</h1><b />
-            <h1>this is banner</h1><b />
+            <Iteams></Iteams>
+            <Footer></Footer>
 
         </div>
     );
