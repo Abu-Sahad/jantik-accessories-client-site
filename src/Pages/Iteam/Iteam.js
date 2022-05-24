@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Iteam = ({ item }) => {
-
+    const navigate = useNavigate();
+    const { _id } = item
+    const purchaseItem = id => {
+        navigate(`/purchase/${id}`)
+    }
     return (
         <div class="card lg:max-w-lg bg-base-100 shadow-xl">
             <figure class="px-10 pt-10">
@@ -10,9 +15,11 @@ const Iteam = ({ item }) => {
             <div class="card-body items-center text-center">
                 <h1 class="card-title">Name: {item.name}</h1>
                 <h3>Price: ${item.price}</h3>
+                <h3>Minimum-Quantity:{item.minimum_quantity}</h3>
+                <h3>Available-Quantity:{item.available_quantity}</h3>
                 <p>Description: {item.description}</p>
                 <div class="card-actions">
-                    <button class="btn btn-primary">Buy Now</button>
+                    <button class="btn btn-primary" onClick={() => purchaseItem(_id)}>Buy Now</button>
                 </div>
             </div>
         </div>
@@ -20,3 +27,6 @@ const Iteam = ({ item }) => {
 };
 
 export default Iteam;
+
+
+

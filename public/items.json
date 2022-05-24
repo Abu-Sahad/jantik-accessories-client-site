@@ -4,27 +4,35 @@
     "name": "Brembo SuperSport",
     "price": 600,
     "description": "The Brembo SuperSport Brake Rotors were developed with the goal of offering the very best high performance brake rotor for both European and Japanese sportbikes.",
-    "img": "https://i.ibb.co/G30XSrM/brembo-hp-brake-rotors-300x300.jpg"
+    "img": "https://i.ibb.co/G30XSrM/brembo-hp-brake-rotors-300x300.jpg",
+    "minimum_quantity": 5,
+    "available_quantity": 1000
   },
   {
     "id": 2,
     "name": "LeoVince Lv One Evo Slip",
     "price": 1097,
     "description": "The Leo Vince LV One EVO Slip-On Exhaust is the ideal combination of Italian styling with modern performance.",
-    "img": "https://i.ibb.co/Yhg87vf/leo-vince-lv-one-evo-slip-on-exhaust-triumph-tiger80020102017-300x300.jpg"
+    "img": "https://i.ibb.co/Yhg87vf/leo-vince-lv-one-evo-slip-on-exhaust-triumph-tiger80020102017-300x300.jpg",
+    "minimum_quantity": 5,
+    "available_quantity": 900
   },
   {
     "id": 3,
     "name": "CRG RC2 Clutch Lever",
     "price": 200,
     "description": "The RC2 is a brand new version of the on-the-fly position adjustable lever, designed for OEM style master cylinders.",
-    "img": "https://i.ibb.co/LQ67NzP/crgrc2-brake-lever-black-300x300.jpg"
+    "img": "https://i.ibb.co/LQ67NzP/crgrc2-brake-lever-black-300x300.jpg",
+    "minimum_quantity": 5,
+    "available_quantity": 900
   },
   {
     "id": 4,
     "name": "Duraboost Conventional Battery",
     "price": 1000,
     "description": "The Duraboost Conventional Battery is a cost-effective direct replacement that meets or exceeds the OEM specifications.",
-    "img": "https://i.ibb.co/fM3mrXt/duraboost-dc14-la2-conventional-battery-300x300.jpg"
+    "img": "https://i.ibb.co/fM3mrXt/duraboost-dc14-la2-conventional-battery-300x300.jpg",
+    "minimum_quantity": 5,
+    "available_quantity": 900
   }
 ]
