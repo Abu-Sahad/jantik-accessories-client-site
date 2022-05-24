@@ -122,7 +122,7 @@ const Signup = () => {
                         <input className='btn w-full max-w-xs' type="submit" value="Log In" />
                     </form>
                     {/* <p>New to Jantik Accessories?</p><Link></Link> */}
-                    <p>New to Jantik Accessories?<Link to='/signup' className='text-primary'>Please Log In</Link></p>
+                    <p>New to Jantik Accessories?<Link to='/login' className='text-primary'>Please Log In</Link></p>
                     <div class="divider">OR</div>
                     <button onClick={() => signInWithGoogle()} class="btn btn-accent">continue with google</button>
 
