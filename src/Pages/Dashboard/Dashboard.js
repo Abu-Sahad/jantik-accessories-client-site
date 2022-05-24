@@ -1,7 +1,13 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import auth from '../../firebase.init';
+import useAdmin from '../useAdmin/useAdmin';
+
 
 const Dashboard = () => {
+    const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user);
     return (
         <div class="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -16,9 +22,34 @@ const Dashboard = () => {
                 <label for="my-drawer-2" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
-                    <li><Link to="/dashboard" >My Profile</Link></li>
-                    <li><Link to="/dashboard/orders">My orders</Link></li>
-                    <li><Link to="/dashboard/review">Add A Review</Link></li>
+                    {user && !admin &&
+                        <>
+                            <li><Link to="/dashboard" >My Profile</Link></li>
+                            <li><Link to="/dashboard/orders">My orders</Link></li>
+                            <li><Link to="/dashboard/review">Add A Review</Link></li>
+
+                        </>
+                    }
+
+                    {admin && (
+                        <>
+                            <li className="mb-3">
+                                <NavLink to="/dashboard/item">Add Products</NavLink>
+                            </li>
+
+                            <li className="mb-3">
+                                <NavLink to="/dashboard/manage-products">Manage Products</NavLink>
+                            </li>
+
+                            <li className="mb-3">
+                                <NavLink to="/dashboard/manage-orders">Manage All Orders</NavLink>
+                            </li>
+                            <li className="mb-3">
+                                <NavLink to="/dashboard/admin">Make Admin</NavLink>
+                            </li>
+                        </>
+                    )}
+
                 </ul>
 
             </div>

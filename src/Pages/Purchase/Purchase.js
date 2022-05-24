@@ -21,8 +21,8 @@ const Purchase = () => {
     const handleSubmit = e => {
         e.preventDefault()
         const quantity = e.target.quantity.value
-        const min = itemDetail.minQuantity
-        const max = itemDetail.availableQuantity
+        const min = itemDetail.minimum_quantity
+        const max = itemDetail.available_quantity
 
         if (quantity < min || quantity > max) {
             alert('Your Quantity have to be between min and Available Quantity')
