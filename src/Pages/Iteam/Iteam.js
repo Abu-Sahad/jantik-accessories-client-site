@@ -19,7 +19,7 @@ const Iteam = ({ item }) => {
                 <h3>Available-Quantity:{item.available_quantity}</h3>
                 <p>Description: {item.description}</p>
                 <div class="card-actions">
-                    <button class="btn btn-primary" onClick={() => purchaseItem(_id)}>Buy Now</button>
+                    <button class="btn btn-accent" onClick={() => purchaseItem(_id)}>Buy Now</button>
                 </div>
             </div>
         </div>

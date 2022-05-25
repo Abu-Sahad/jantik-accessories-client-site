@@ -2,7 +2,7 @@ import React from 'react';
 
 const Summary = () => {
     return (
-        <div className='text-center mb-10'>
+        <div className='text-center  mb-10'>
             <h1 className='text-primary text-4xl font-bold uppercase mb-5'>Business Summary</h1>
             <div class="stats stats-vertical lg:stats-horizontal shadow">
                 <div class="stat">

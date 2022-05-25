@@ -10,7 +10,7 @@ const Purchase = () => {
     //+console.log(itemDetail);
     //console.log(itemDetail.name)
     const [reload, setReload] = useState(false)
-    const [isDisabled, setIsDisabled] = useState(false);
+    //const [isDisabled, setIsDisabled] = useState(false);
     const [user] = useAuthState(auth);
     useEffect(() => {
         fetch(`http://localhost:5000/item/${_id}`)
@@ -27,7 +27,8 @@ const Purchase = () => {
         if (quantity < min || quantity > max) {
             alert('Your Quantity have to be between min and Available Quantity')
             setReload(!reload)
-            setIsDisabled(true)
+            //setIsDisabled(true)
+            return
         }
         else {
 
@@ -112,7 +113,7 @@ const Purchase = () => {
                             <input
                                 type="Submit"
                                 value={"Order"}
-                                disabled={isDisabled}
+                                //disabled={isDisabled}
                                 className="btn btn-secondary my-2 w-80 text-white"
                             />
                         </form>
