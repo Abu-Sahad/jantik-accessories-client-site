@@ -1,22 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+    const today = new Date();
+    const year = today.getFullYear();
     return (
         <footer className="p-10 bg-neutral text-neutral-content">
             <div className='footer'>
                 <div>
-                    <span class="footer-title">Services</span>
-                    <a class="link link-hover">Branding</a>
-                    <a class="link link-hover">Design</a>
-                    <a class="link link-hover">Marketing</a>
-                    <a class="link link-hover">Advertisement</a>
+                    <span class="footer-title">Jantik Accessories</span>
+                    <p>Mirpur-2,Dhaka-1216,Commerce college road</p>
+                    <p>01777777777</p>
+                    <p>abu142@gmail.com</p>
                 </div>
                 <div>
-                    <span class="footer-title">Company</span>
-                    <a class="link link-hover">About us</a>
-                    <a class="link link-hover">Contact</a>
-                    <a class="link link-hover">Jobs</a>
-                    <a class="link link-hover">Press kit</a>
+                    <span class="footer-title">Information</span>
+                    <Link to='/home' class="link link-hover">Home</Link>
+                    <Link to='/blogs' class="link link-hover">Blogs</Link>
+                    <Link to='/portfolio' class="link link-hover">Portfolio</Link>
+                    <Link to='/dashboard' class="link link-hover">Dashboard</Link>
+
                 </div>
                 <div>
                     <span class="footer-title">Legal</span>
@@ -27,7 +30,7 @@ const Footer = () => {
             </div>
             <footer class="footer footer-center p-4">
                 <div>
-                    <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+                    <p>Copyright © {year}  - All right reserved by Jantik Accessories Ltd</p>
                 </div>
             </footer>
         </footer>

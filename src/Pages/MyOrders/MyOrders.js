@@ -9,14 +9,14 @@ const MyOrders = () => {
     const email = user.email
     console.log(email)
 
-useEffect(() => {
-    fetch(`http://localhost:5000/order?email=${email}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setOrders(data)
-        })
-}, [email])
+    useEffect(() => {
+        fetch(`http://localhost:5000/order?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setOrders(data)
+            })
+    }, [email])
 
     if (loading) {
         return <Loading></Loading>
@@ -45,8 +45,8 @@ useEffect(() => {
                             <th>{index + 1}</th>
                             <td>{order.tool}</td>
                             <td>{order.quantity}</td>
-                            <td><button className="btn text-semibold btn-error btn-xs">Cancel</button></td>
-                            <td><button className="btn text-semibold  btn-primary  btn-xs">Pay</button></td>
+                            <td><button className="btn text-semibold px-6 btn-error btn-xs">Cancel</button></td>
+                            <td><button className="btn text-semibold px-10 btn-accent  btn-xs">Pay</button></td>
 
                         </tr>)}
 
