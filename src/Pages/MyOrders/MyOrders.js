@@ -40,11 +40,11 @@ useEffect(() => {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map((o, i) => <tr key={o._id} >
+                        {orders.map((order, index) => <tr key={order._id} >
 
-                            <th>{i + 1}</th>
-                            <td>{o.tool}</td>
-                            <td>{o.quantity}</td>
+                            <th>{index + 1}</th>
+                            <td>{order.tool}</td>
+                            <td>{order.quantity}</td>
                             <td><button className="btn text-semibold btn-error btn-xs">Cancel</button></td>
                             <td><button className="btn text-semibold  btn-primary  btn-xs">Pay</button></td>
 
