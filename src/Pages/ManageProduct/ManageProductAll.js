@@ -1,5 +1,6 @@
 import React from 'react';
-const ManageProducts = ({ item }) => {
+
+const ManageProductAll = ({item}) => {
     return (
         <div class="card lg:max-w-lg bg-base-100 shadow-xl">
             <figure class="px-10 pt-10">
@@ -16,4 +17,4 @@ const ManageProducts = ({ item }) => {
     );
 };
 
-export default ManageProducts;
+export default ManageProductAll;

@@ -15,6 +15,9 @@ import AddProduct from './Pages/AddProduct/AddProduct';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import ManageProduct from './Pages/ManageProduct/ManageProduct';
 import Blogs from './Pages/Blogs/Blogs';
+import Payment from './Pages/Payment/Payment';
+import { ManageOrders } from './Pages/ManageOders/ManageOrders';
+
 
 
 function App() {
@@ -27,6 +30,7 @@ function App() {
         <Route path="blogs" element={<Blogs></Blogs>} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="payment/:id" element={<Payment />} />
         <Route path="portfolio" element={<Portfolio />} />
         <Route path="purchase/:_id" element={<RequireAuth><Purchase /></RequireAuth>} />
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>} >
@@ -36,6 +40,7 @@ function App() {
           <Route path='/dashboard/admin' element={<Admin></Admin>}></Route>
           <Route path='/dashboard/item' element={<AddProduct></AddProduct>}></Route>
           <Route path='/dashboard/manage-product' element={<ManageProduct></ManageProduct>}></Route>
+          <Route path='/dashboard/manage-orders' element={<ManageOrders></ManageOrders>}></Route>
         </Route>
 
       </Routes>

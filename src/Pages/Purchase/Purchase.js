@@ -5,10 +5,7 @@ import auth from '../../firebase.init';
 
 const Purchase = () => {
     const { _id } = useParams();
-    // console.log(_id)
     const [itemDetail, setItemDetail] = useState([]);
-    //+console.log(itemDetail);
-    //console.log(itemDetail.name)
     const [reload, setReload] = useState(false)
     //const [isDisabled, setIsDisabled] = useState(false);
     const [user] = useAuthState(auth);
@@ -23,6 +20,9 @@ const Purchase = () => {
         const quantity = e.target.quantity.value
         const min = itemDetail.minimum_quantity
         const max = itemDetail.available_quantity
+
+        //const priceall = quantity * itemDetail.price;
+
 
         if (quantity < min || quantity > max) {
             alert('Your Quantity have to be between min and Available Quantity')
@@ -41,7 +41,8 @@ const Purchase = () => {
             phone: e.target.phone.value,
             address: e.target.address.value,
             tool: itemDetail.name,
-            quantity: e.target.quantity.value
+            quantity: e.target.quantity.value,
+            price: e.target.price.value
 
         }
         fetch('http://localhost:5000/order', {
@@ -58,6 +59,8 @@ const Purchase = () => {
             })
 
     }
+
+
 
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -109,7 +112,8 @@ const Purchase = () => {
                                 placeholder="Your Address"
                                 className="input input-bordered my-2 input-success w-full max-w-xs"
                             />
-                            <input type="number" defaultValue={itemDetail.minQuantity} className="input input-bordered my-2 input-success w-full max-w-xs" name="quantity" placeholder="Set quantity" />
+                            <input type="number" defaultValue={itemDetail.minimum_quantity} className="input input-bordered my-2 input-success w-full max-w-xs" name="quantity" placeholder="Set quantity" />
+                            <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="price" placeholder="price" />
                             <input
                                 type="Submit"
                                 value={"Order"}
