@@ -6,8 +6,8 @@ import auth from '../../firebase.init';
 const Purchase = () => {
     const { _id } = useParams();
     const [itemDetail, setItemDetail] = useState([]);
-    const [reload, setReload] = useState(false)
-    //const [isDisabled, setIsDisabled] = useState(false);
+    // const [reload, setReload] = useState(false)
+    const [isDisabled, setIsDisabled] = useState('');
     const [user] = useAuthState(auth);
     useEffect(() => {
         fetch(`http://localhost:5000/item/${_id}`)
@@ -15,26 +15,24 @@ const Purchase = () => {
             .then((data) => setItemDetail(data));
     }, [itemDetail, _id]);
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        const quantity = e.target.quantity.value
+    const handleChange = (e) => {
+        const quantity = e.target.value;
         const min = itemDetail.minimum_quantity
         const max = itemDetail.available_quantity
-
-        //const priceall = quantity * itemDetail.price;
-
-
-        if (quantity < min || quantity > max) {
-            alert('Your Quantity have to be between min and Available Quantity')
-            setReload(!reload)
-            //setIsDisabled(true)
-            return
+        if (quantity < min) {
+            setIsDisabled("you must be set order quantity more then minimum order quantity ");
+        }
+        else if (quantity > max) {
+            setIsDisabled("you can not order more then in stoke quantity");
         }
         else {
-
-            alert('delivered your order')
+            setIsDisabled("");
         }
 
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
         const orders = {
             userEmail: user.email,
             userName: user.displayName,
@@ -55,10 +53,13 @@ const Purchase = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result)
-                e.target.reset()
+
             })
 
+        e.target.reset()
     }
+
+
 
 
 
@@ -112,12 +113,13 @@ const Purchase = () => {
                                 placeholder="Your Address"
                                 className="input input-bordered my-2 input-success w-full max-w-xs"
                             />
-                            <input type="number" defaultValue={itemDetail.minimum_quantity} className="input input-bordered my-2 input-success w-full max-w-xs" name="quantity" placeholder="Set quantity" />
+                            <p>{isDisabled}</p>
+                            <input type="number" defaultValue={itemDetail.minimum_quantity} className="input input-bordered my-2 input-success w-full max-w-xs" name="quantity" placeholder="Set quantity" onChange={handleChange} />
                             <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="price" placeholder="price" />
                             <input
                                 type="Submit"
                                 value={"Order"}
-                                //disabled={isDisabled}
+                                disabled={isDisabled}
                                 className="btn btn-secondary my-2 w-80 text-white"
                             />
                         </form>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ManageProducts from '../ManageProducts/ManageProducts';
 import ManageProductAll from './ManageProductAll';
-//import ManageProducts from '../ManageProducts/ManageProducts';
+
 
 const ManageProduct = () => {
     const [itemsProduct, setItemsProduct] = useState([]);
@@ -13,7 +12,7 @@ const ManageProduct = () => {
             .then(data => setItemsProduct(data));
     }, [itemsProduct])
     return (
-        <div className='my-28 mx-12'>
+        <div className='mx-12'>
             <div className='text-center mb-10'>
                 <h3 className='text-primary text-4xl font-bold uppercase'>Tools area</h3>
             </div>

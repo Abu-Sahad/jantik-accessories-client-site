@@ -1,4 +1,4 @@
-import React from 'react';
+<!-- import React from 'react';
 const ManageProducts = ({ item }) => {
     return (
         <div class="card lg:max-w-lg bg-base-100 shadow-xl">
@@ -16,4 +16,4 @@ const ManageProducts = ({ item }) => {
     );
 };
 
-export default ManageProducts;
+export default ManageProducts; -->

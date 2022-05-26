@@ -9,57 +9,60 @@ import { useForm } from 'react-hook-form';
 const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('items', () => fetch('http://localhost:5000/item').then(res => res.json()))
+    // const { data: services, isLoading } = useQuery('items', () => fetch('http://localhost:5000/item').then(res => res.json()))
 
-    const imageStorageKey = 'a28bb1bd3aae949d179f552f904af94e';
+    //const imageStorageKey = '8e00a8bb07a2e2db04a4b20e180b1d1f';
     const onSubmit = async data => {
-        const image = data.image[0];
-        const formData = new FormData();
-        formData.append('image', image);
-        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success) {
-                    const img = result.data.url;
-                    const item = {
-                        name: data.name,
-                        description: data.description,
-                        minimum_quantity: data.minimum_quantity,
-                        available_quantity: data.available_quantity,
-                        img: img
-                    }
-                    // send to your database 
-                    fetch('http://localhost:5000/item', {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                        },
-                        body: JSON.stringify(item)
-                    })
-                        .then(res => res.json())
-                        .then(inserted => {
-                            if (inserted.insertedId) {
-                                toast.success('Item added successfully')
-                                reset();
-                            }
-                            else {
-                                toast.error('Failed to add the doctor');
-                            }
-                        })
-
-                }
-
+        //const image = data.image[0];
+        //const formData = new FormData();
+        //formData.append('image', image);
+        //const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+        // fetch(url, {
+        //     method: 'POST',
+        //     body: formData
+        //})
+        //.then(res => res.json())
+        //.then(result => {
+        // console.log(result)
+        // if (result.success) {
+        //     const img = result.data.url;
+        const item = {
+            name: data.name,
+            description: data.description,
+            minimum_quantity: data.minimum_quantity,
+            available_quantity: data.available_quantity,
+            price: data.price,
+            img: data.image
+        }
+        console.log(item)
+            // send to your database 
+            fetch('http://localhost:5000/item', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(item)
             })
+            .then(res => res.json())
+            .then(inserted => {
+                if (inserted.insertedId) {
+                    toast.success('Item added successfully')
+                    reset();
+                }
+                else {
+                    toast.error('Failed to add the doctor');
+                }
+            })
+
+
+
+
     }
 
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
 
     return (
         <div>
@@ -136,10 +139,26 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
+                        <span className="label-text">Price</span>
+                    </label>
+                    <input
+                        type="number"
+                        placeholder="Your Price"
+                        className="input input-bordered w-full max-w-xs"
+                        {...register("price", {
+                            required: {
+                                value: true,
+                                message: 'price is Required'
+                            },
+                        })}
+                    />
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label">
                         <span className="label-text">Photo</span>
                     </label>
                     <input
-                        type="file"
+                        type="text"
                         className="input input-bordered w-full max-w-xs"
                         {...register("image", {
                             required: {
