@@ -9,16 +9,16 @@ import ManageIndividualOrders from './ManageIndividualOrders';
 
 export const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
-  //   const [user, loading] = useAuthState(auth);
-  // const email = user.email;
-  // console.log(email);
-    useEffect( () => {
-        fetch(`http://localhost:5000/order`)
-        .then(res => res.json())
-        .then(data => setOrders(data));
+    //   const [user, loading] = useAuthState(auth);
+    // const email = user.email;
+    // console.log(email);
+    useEffect(() => {
+        fetch(`https://sleepy-plains-65511.herokuapp.com/order`)
+            .then(res => res.json())
+            .then(data => setOrders(data));
     }, [])
 
-    if(orders === []){
+    if (orders === []) {
         return <Loading></Loading>
     }
     console.log(orders);

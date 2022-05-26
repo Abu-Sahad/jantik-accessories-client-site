@@ -7,7 +7,7 @@ const ManageProduct = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/item')
+        fetch('https://sleepy-plains-65511.herokuapp.com/item')
             .then(res => res.json())
             .then(data => setItemsProduct(data));
     }, [itemsProduct])

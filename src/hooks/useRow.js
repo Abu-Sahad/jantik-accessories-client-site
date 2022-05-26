@@ -3,7 +3,7 @@ import React from 'react';
 const UserRow = ({ user, index, refetch }) => {
     const { email, role } = user
     const handleMakeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://sleepy-plains-65511.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -18,7 +18,7 @@ const UserRow = ({ user, index, refetch }) => {
     }
 
     const handleDelete = () => {
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://sleepy-plains-65511.herokuapp.com/user/${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

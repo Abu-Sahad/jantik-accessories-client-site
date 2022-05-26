@@ -21,7 +21,7 @@ const MyProfile = () => {
             link: event.target.link.value
         }
 
-        fetch('http://localhost:5000/profile', {
+        fetch('https://sleepy-plains-65511.herokuapp.com/profile', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

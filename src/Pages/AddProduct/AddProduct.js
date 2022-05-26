@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    // const { data: services, isLoading } = useQuery('items', () => fetch('http://localhost:5000/item').then(res => res.json()))
+    // const { data: services, isLoading } = useQuery('items', () => fetch('https://sleepy-plains-65511.herokuapp.com/item').then(res => res.json()))
 
     //const imageStorageKey = '8e00a8bb07a2e2db04a4b20e180b1d1f';
     const onSubmit = async data => {
@@ -35,15 +35,15 @@ const AddProduct = () => {
             img: data.image
         }
         console.log(item)
-            // send to your database 
-            fetch('http://localhost:5000/item', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                },
-                body: JSON.stringify(item)
-            })
+        // send to your database 
+        fetch('https://sleepy-plains-65511.herokuapp.com/item', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(item)
+        })
             .then(res => res.json())
             .then(inserted => {
                 if (inserted.insertedId) {

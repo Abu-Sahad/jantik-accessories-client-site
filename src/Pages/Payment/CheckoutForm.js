@@ -10,10 +10,10 @@ const CheckoutForm = ({ purchase }) => {
     const [processing, setProcessing] = useState(false)
     const [transactionId, setTransactionId] = useState('')
     const [clientSecret, setClientSecret] = useState('');
-    const { _id,price, userName, userEmail } = purchase;
+    const { _id, price, userName, userEmail } = purchase;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://sleepy-plains-65511.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -71,26 +71,26 @@ const CheckoutForm = ({ purchase }) => {
             setTransactionId(paymentIntent.id);
             console.log(paymentIntent);
             setSuccess('Congrats! Your Payment Completed.')
-          //STORE PAYMENT ON DATABASE
-          const payment={
-              item:_id,
-              transactionId:paymentIntent.id
+            //STORE PAYMENT ON DATABASE
+            const payment = {
+                item: _id,
+                transactionId: paymentIntent.id
 
-          }
-          
-          fetch(`http://localhost:5000/order/${_id}`,{
-              method:'PATCH',
-               headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(payment)
+            }
 
-          }).then(res=>res.json())
-          .then(data=>{
-              setProcessing(false)
-              console.log(data);
-          })
+            fetch(`https://sleepy-plains-65511.herokuapp.com/order/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+
+            }).then(res => res.json())
+                .then(data => {
+                    setProcessing(false)
+                    console.log(data);
+                })
 
         }
     }

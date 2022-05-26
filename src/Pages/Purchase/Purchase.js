@@ -10,7 +10,7 @@ const Purchase = () => {
     const [isDisabled, setIsDisabled] = useState('');
     const [user] = useAuthState(auth);
     useEffect(() => {
-        fetch(`http://localhost:5000/item/${_id}`)
+        fetch(`https://sleepy-plains-65511.herokuapp.com/item/${_id}`)
             .then((res) => res.json())
             .then((data) => setItemDetail(data));
     }, [itemDetail, _id]);
@@ -43,7 +43,7 @@ const Purchase = () => {
             price: e.target.price.value
 
         }
-        fetch('http://localhost:5000/order', {
+        fetch('https://sleepy-plains-65511.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
