@@ -23,10 +23,33 @@ export const ManageOrders = () => {
     }
     console.log(orders);
     return (
-        <div className='grid grid-flow-row-dense grid-cols-3 grid-rows-3'>
-            {
-                orders.map(order => <ManageIndividualOrders key={order._id} order={order} orders={orders} setOrders={setOrders}></ManageIndividualOrders>)
-            }
+        <div>
+            {/* <h2 className="text-2xl font-serif font-bold p-4">Manage All Orders Here:{tools.length}</h2> */}
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            orders.map((order, i) => <tr>
+                                <th>{i + 1}</th>
+                                <td>{order.userName}</td>
+                                <td>{order.userEmail}</td>
+
+                            </tr>)
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     );
 };

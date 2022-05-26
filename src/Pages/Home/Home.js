@@ -16,7 +16,6 @@ const Home = () => {
             <Reviews></Reviews>
             <Support></Support>
             <Subscribe></Subscribe>
-            <Footer></Footer>
 
         </div>
     );

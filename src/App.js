@@ -17,6 +17,8 @@ import ManageProduct from './Pages/ManageProduct/ManageProduct';
 import Blogs from './Pages/Blogs/Blogs';
 import Payment from './Pages/Payment/Payment';
 import { ManageOrders } from './Pages/ManageOders/ManageOrders';
+import Footer from './Pages/Footer/Footer';
+import NotFound from './Pages/NotFound/NotFound';
 
 
 
@@ -42,8 +44,10 @@ function App() {
           <Route path='/dashboard/manage-product' element={<ManageProduct></ManageProduct>}></Route>
           <Route path='/dashboard/manage-orders' element={<ManageOrders></ManageOrders>}></Route>
         </Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
 
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

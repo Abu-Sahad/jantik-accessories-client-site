@@ -8,13 +8,13 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([])
     const [user, loading] = useAuthState(auth)
     const email = user.email
-    console.log(email)
+    //console.log(email)
 
     useEffect(() => {
         fetch(`https://sleepy-plains-65511.herokuapp.com/order?email=${email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                //console.log(data)
                 setOrders(data)
             })
     }, [email])

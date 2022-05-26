@@ -6,19 +6,6 @@ import Modal from '../Modal/Modal';
 const ManageProductAll = ({ item }) => {
 
     const [isdelete, setIsDelete] = useState(null)
-
-    // const handleDelete = () => {
-    //     fetch(`https://sleepy-plains-65511.herokuapp.com/item/${item?._id}`, {
-    //         method: 'DELETE',
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-
-    // }
-
-
     return (
         <div class="card lg:max-w-lg bg-base-100 shadow-xl">
             <figure class="px-10 pt-10">

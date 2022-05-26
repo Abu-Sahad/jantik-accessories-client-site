@@ -11,9 +11,10 @@ const CheckoutForm = ({ purchase }) => {
     const [transactionId, setTransactionId] = useState('')
     const [clientSecret, setClientSecret] = useState('');
     const { _id, price, userName, userEmail } = purchase;
+    console.log(_id)
 
     useEffect(() => {
-        fetch('https://sleepy-plains-65511.herokuapp.com/create-payment-intent', {
+        fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -78,7 +79,7 @@ const CheckoutForm = ({ purchase }) => {
 
             }
 
-            fetch(`https://sleepy-plains-65511.herokuapp.com/order/${_id}`, {
+            fetch(`http://localhost:5000/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
