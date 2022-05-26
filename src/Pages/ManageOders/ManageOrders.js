@@ -23,7 +23,7 @@ export const ManageOrders = () => {
     }
     console.log(orders);
     return (
-        <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 mt-32'>
+        <div className='grid grid-flow-row-dense grid-cols-3 grid-rows-3'>
             {
                 orders.map(order => <ManageIndividualOrders key={order._id} order={order} orders={orders} setOrders={setOrders}></ManageIndividualOrders>)
             }

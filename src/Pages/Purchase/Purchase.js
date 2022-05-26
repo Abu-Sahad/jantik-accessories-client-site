@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Purchase = () => {
     const { _id } = useParams();
@@ -26,7 +28,7 @@ const Purchase = () => {
             setIsDisabled("you can not order more then in stoke quantity");
         }
         else {
-            setIsDisabled("");
+            setIsDisabled(toast);
         }
 
     }
@@ -126,6 +128,7 @@ const Purchase = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

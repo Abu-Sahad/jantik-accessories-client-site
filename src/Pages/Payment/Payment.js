@@ -28,10 +28,10 @@ const Payment = () => {
 
             <div class="card w-50 max-w-md bg-base-100 shadow-xl">
                 <div class="card-body">
-                    <p className='text-success font-bold'>Hello, {purchase.userName}</p>
-                    <h2 class="card-title">Pay for item: {purchase.tool}</h2>
-                    <h2 class="card-title">We will see the Quantity: {purchase.quantity}</h2>
-                    <p>Please pay:${purchase.price}</p>
+                    <p className='text-success font-bold'>Hello, {purchase?.userName}</p>
+                    <h2 class="card-title">Pay for item: {purchase?.tool}</h2>
+                    <h2 class="card-title">We will see the Quantity: {purchase?.quantity}</h2>
+                    <p>Please pay:${purchase?.price}</p>
                     <div class="card-actions justify-end">
                         <button class="btn btn-primary">Buy Now</button>
                     </div>

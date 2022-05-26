@@ -8,24 +8,7 @@ import { useForm } from 'react-hook-form';
 
 const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-
-    // const { data: services, isLoading } = useQuery('items', () => fetch('https://sleepy-plains-65511.herokuapp.com/item').then(res => res.json()))
-
-    //const imageStorageKey = '8e00a8bb07a2e2db04a4b20e180b1d1f';
     const onSubmit = async data => {
-        //const image = data.image[0];
-        //const formData = new FormData();
-        //formData.append('image', image);
-        //const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData
-        //})
-        //.then(res => res.json())
-        //.then(result => {
-        // console.log(result)
-        // if (result.success) {
-        //     const img = result.data.url;
         const item = {
             name: data.name,
             description: data.description,
@@ -55,14 +38,8 @@ const AddProduct = () => {
                 }
             })
 
-
-
-
     }
 
-    // if (isLoading) {
-    //     return <Loading></Loading>
-    // }
 
     return (
         <div>
@@ -173,8 +150,9 @@ const AddProduct = () => {
                 </div>
 
                 <input className='btn w-full max-w-xs text-white' type="submit" value="Add" />
-                <ToastContainer />
+               
             </form>
+            <ToastContainer />
         </div>
     );
 };

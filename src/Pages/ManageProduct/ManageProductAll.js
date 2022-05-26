@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from '../Modal/Modal';
+
+
 
 const ManageProductAll = ({ item }) => {
 
-    const handleDelete = () => {
-        fetch(`https://sleepy-plains-65511.herokuapp.com/item/${item?._id}`, {
-            method: 'DELETE',
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
+    const [isdelete, setIsDelete] = useState(null)
 
-    }
+    // const handleDelete = () => {
+    //     fetch(`https://sleepy-plains-65511.herokuapp.com/item/${item?._id}`, {
+    //         method: 'DELETE',
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+
+    // }
 
 
     return (
@@ -25,8 +30,13 @@ const ManageProductAll = ({ item }) => {
                 <h3>Minimum-Quantity:{item.minimum_quantity}</h3>
                 <h3>Available-Quantity:{item.available_quantity}</h3>
                 <p>Description: {item.description}</p>
+                <label for="my-modal-6" onClick={() => setIsDelete(item)} class="btn modal-button">Delete User</label>
             </div>
-            <button onClick={handleDelete} class="btn btn-active btn-accent">Button</button>
+            {isdelete && <Modal isdelete={isdelete} setIsDelete={setIsDelete} key={isdelete._id}></Modal>}
+
+            {/* <button onClick={handleDelete} class="btn btn-active btn-accent">Button</button> */}
+
+
         </div>
     );
 };
