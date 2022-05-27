@@ -17,11 +17,24 @@ const MyOrders = () => {
                 //console.log(data)
                 setOrders(data)
             })
-    }, [email])
+    }, [email, orders])
 
     if (loading) {
         return <Loading></Loading>
     }
+
+    const handleOrderDelete = (id) => {
+        console.log(id);
+        fetch(`https://sleepy-plains-65511.herokuapp.com/order/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+
+    }
+    console.log(orders)
 
 
     return (
@@ -51,7 +64,7 @@ const MyOrders = () => {
                                 {(order.price && order.paid) && <button className="btn text-semibold px-6 btn-error btn-xs">paid</button>}
 
                             </td>
-                            <td><button className="btn text-semibold px-10 btn-accent  btn-xs">cancel</button></td>
+                            <td><button onClick={() => handleOrderDelete(order._id)} className="btn text-semibold px-10 btn-accent  btn-xs">cancel</button></td>
 
                         </tr>)}
 
